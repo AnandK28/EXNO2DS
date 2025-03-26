@@ -121,7 +121,8 @@ sns.heatmap(corr,annot=True)
 ```
 sns.pairplot(df)
 ```
-![image](https://github.com/Ajith1413/EXNO2DS/assets/139842524/81b2a985-cb2b-4fd1-9753-d8d3d054855d)
+![image](https://github.com/user-attachments/assets/61ba96b9-39de-492e-962d-6008dd92795a)
+
 
 # RESULT
      Code are sucessfully executed.
