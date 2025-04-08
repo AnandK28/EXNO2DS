@@ -1,13 +1,11 @@
-# EXPERIMENT 2: EXPLORATORY DATA ANALYSIS
-# Anand K 212224040022
-
-## AIM:
-  To perform Exploratory Data Analysis on the given data set.
+# EXNO2DS
+# AIM:
+      To perform Exploratory Data Analysis on the given data set.
       
-## EXPLANATION:
+# EXPLANATION:
   The primary aim with exploratory analysis is to examine the data for distribution, outliers and anomalies to direct specific testing of your hypothesis.
   
-## ALGORITHM:
+# ALGORITHM:
 STEP 1: Import the required packages to perform Data Cleansing,Removing Outliers and Exploratory Data Analysis.
 
 STEP 2: Replace the null value using any one of the method from mode,median and mean based on the dataset available.
@@ -24,281 +22,101 @@ STEP 7: Use cross tabulation method to quantitatively analyze the relationship b
 
 STEP 8: Use heatmap method of representation to show relationships between two variables, one plotted on each axis.
 
-## CODING AND OUTPUT:
-### PROGRAMS:
-```python
+## CODING AND OUTPUT
+~~~
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-
-df=pd.read_csv("titanic_dataset.csv")
-
+df=pd.read_csv("/content/titanic_dataset.csv")
 df
-```
-### OUTPUT:
-![alt text](<SCREENSHOT IMAGES/image.png>)
-
-## INFORMATION ABOUT THE DATASET:
-```python
+~~~
+![Screenshot 2025-03-25 133524](https://github.com/user-attachments/assets/04fbcf65-fd80-4108-ad86-6cc026b8a49b)
+~~~
 df.info()
-```
-### OUTPUT:
-![alt text](<SCREENSHOT IMAGES/image2.png>)
-
-## DISPLAY NO OF ROWS AND COLUMNS:
-```python
+~~~
+![Screenshot 2025-03-25 133534](https://github.com/user-attachments/assets/aa3fbbd0-6662-4ed4-aad8-f9bfb1100b1a)
+~~~
 df.shape
-```
-### OUTPUT:
-![alt text](<SCREENSHOT IMAGES/image3.png>)
-
-## DROP THE NULL VALUES:
-```PYTHON
-df.dropna(inplace=True)
-df
-```
-### OUTPUT:
-![alt text](<SCREENSHOT IMAGES/image4.png>)
-
-## AFTER DROPPPING THE NULL VALUES(GIVE THE NUMBER OF ROWS AND COLUMNS):
-```PYTHON
-df.shape
-```
-### OUTPUT:
-![alt text](<SCREENSHOT IMAGES/image5.png>)
-
-## SET PASSENGER ID AS INDEX COLUMN:
-```PYTHON
+~~~
+![Screenshot 2025-03-25 133542](https://github.com/user-attachments/assets/2a4fd621-4de9-4f64-9a51-fb351ae58d5b)
+~~~
 df.set_index("PassengerId",inplace=True)
-df
-```
-### OUTPUT:
-![alt text](<SCREENSHOT IMAGES/image6.png>)
-
-## STASTISTICS OF THE DATASET:
-```PYTHON
 df.describe()
-```
-### OUTPUT:
-![alt text](<SCREENSHOT IMAGES/image7.png>)
-
-## CATEGORICAL DATA ANALYSIS:
-## USE VALUE COUNT FUNCTION AND PERFROM CATEGORICAL ANALYSIS:
-```python
+~~~
+![Screenshot 2025-03-25 133549](https://github.com/user-attachments/assets/ca6d07ee-6047-48db-b5c3-564bb12fc8a0)
+~~~
+df.shape
+~~~
+![Screenshot 2025-03-25 133556](https://github.com/user-attachments/assets/cc3aae99-7bd9-464f-8f2a-b14e344374a5)
+~~~
 df.nunique()
-```
-### OUTPUT:
-![alt text](<SCREENSHOT IMAGES/image8.png>)
-
-## IT'S COUNTS THE NUMBERS OF UNSURVIVED AND SURVIVED:
-```PYTHON
+~~~
+![Screenshot 2025-03-25 133601](https://github.com/user-attachments/assets/49080eff-983d-4c1d-9881-96bd4b4dfddc)
+~~~
 df["Survived"].value_counts()
-```
-### OUTPUT:
-![alt text](<SCREENSHOT IMAGES/image9.png>)
-
-## PERCENTAGE OF UNSURVIVED AND SURVIVED:
-```PYTHON
+~~~
+![Screenshot 2025-03-25 133608](https://github.com/user-attachments/assets/72b5dbca-a14a-4454-8dde-ada968816ee0)
+~~~
 per=(df["Survived"].value_counts()/df.shape[0]*100).round(2)
 per
-```
-### OUTPUT:
-![alt text](<SCREENSHOT IMAGES/image10.png>)
-
-
-## IT'S COUNTS THE NUMBERS OF MALE AND FEMALE IN SEX COLUMN:
-```PYTHON
-df['Sex'].value_counts()
-```
-### OUTPUT:
-
-![alt text](<SCREENSHOT IMAGES/image11.png>)
-
-## PERCENTAGE OF MALE AND FEMALE:
-```PYTHON
-per1=(df['Sex'].value_counts()/df.shape[0]*100).round(2)
-per1
-```
-### OUTPUT:
-
-![alt text](<SCREENSHOT IMAGES/image12.png>)
-
-## COUNTS THE Pclass OF (1,2,3):
-```PYTHON
-df["Pclass"].value_counts()
-```
-### OUTPUT:
-
-![alt text](<SCREENSHOT IMAGES/image13.png>)
-
-## PERCENTAGE OF Pclass:
-```PYTHON
-per2=(df["Pclass"].value_counts()/df.shape[0]*100).round(2)
-per2
-```
-### OUTPUT:
-
-![alt text](<SCREENSHOT IMAGES/image14.png>)
-
-## UNIVARIATE ANALYSIS:
-## USE COUNTPLOT AND PERFORM UNIVARIATE ANALYSIS FOR THE "SURVIVED" COLUMN IN TITANIC DATASET:
-```PYTHON
+~~~
+![Screenshot 2025-03-25 133614](https://github.com/user-attachments/assets/0720ab06-f111-4f3f-815e-3b55d7d92374)
+~~~
 sns.countplot(data=df,x="Survived")
-```
-### OUTPUT:
-
-![alt text](<SCREENSHOT IMAGES/image15.png>)
-
-## HISTOGRAM FOR DISTRIBUTION:
-```PYTHON
-sns.histplot(df['Survived'], kde=True)
-```
-### OUTPUT:
-
-![alt text](<SCREENSHOT IMAGES/image16.png>)
-
-## KDE PLOT FOR SMOOTH DISTRIBUTION:
-```PYTHON
-sns.kdeplot(df['Survived'], shade=True)
-```
-### OUTPUT:
-
-![alt text](<SCREENSHOT IMAGES/image17.png>)
-
-## COUNT PLOT TO SEE THE FREQUENCY OF CATEGORIES:
-```PYTHON
-sns.countplot(x='Embarked', data=df)
-```
-### OUTPUT:
-
-![alt text](<SCREENSHOT IMAGES/image18.png>)
-
-## IDENTIFY UNIQUE VALUES IN "PASSENGER CLASS" COLUMN:
-```PYTHON
-df.Pclass.unique()
-```
-### OUTPUT:
-
-![alt text](<SCREENSHOT IMAGES/image19.png>)
-
-## RENAMING COLUMN:
-```PYTHON
-df.rename(columns = {'Sex':'Gender'}, inplace = True)
+~~~
+![Screenshot 2025-03-25 133620](https://github.com/user-attachments/assets/24f366ed-b9a9-4afa-b6e7-c34c489b3f64)
+~~~
 df
-```
-### OUTPUT:
-
-![alt text](<SCREENSHOT IMAGES/image20.png>)
-
-## BIVARIATE ANALYSIS:
-## USE CATPLOT METHOD FOR BIVARIATE ANALYSIS:
-```PYTHON
+~~~
+![Screenshot 2025-03-25 133631](https://github.com/user-attachments/assets/369a4f22-f7e7-4388-a5c5-61092efdc108)
+~~~
+df.Pclass.unique()
+~~~
+![Screenshot 2025-03-25 133641](https://github.com/user-attachments/assets/55821999-b775-4b97-a0bb-6eb15d76ab6e)
+~~~
+df.rename(columns={'Sex':'Gender'},inplace=True)
+df
+~~~
+![Screenshot 2025-03-25 133651](https://github.com/user-attachments/assets/fcb76d41-6a07-4723-a54b-9cc14f15d40b)
+~~~
 sns.catplot(x="Gender",col="Survived",kind="count",data=df,height=5,aspect=.7)
-```
-### OUTPUT:
-
-![alt text](<SCREENSHOT IMAGES/image21.png>)
-
-
-## KDE PLOT (JOINT DISTRIBUTION):
-```PYTHON
-sns.kdeplot(x='Survived', y='Age', data=df, cmap="Blues", shade=True)
-plt.title('Bivariate KDE Plot')
-plt.show()
-```
-### OUTPUT:
-
-![alt text](<SCREENSHOT IMAGES/image23.png>)
-
-## REGRESSION PLOT FOR LINEAR RELATIONSHIPS:
-```PYTHON
-sns.lmplot(x='Survived', y='Age', data=df)
-plt.title('Regression Plot: Numerical Column 1 vs Numerical Column 2')
-plt.show()
-```
-
-### OUTPUT:
-
-![alt text](<SCREENSHOT IMAGES/image24.png>)
-
-
-## USE BOXPLOT METHOD TO ANALYZE AGE AND SURVIVED COLUMN:
-```PYTHON
+~~~
+![Screenshot 2025-03-25 133700](https://github.com/user-attachments/assets/6bae3096-0584-447c-8b12-3c179cc51b9d)
+~~~
+sns.catplot(x="Survived",hue="Gender",data=df,kind="count")
+~~~
+![Screenshot 2025-03-25 133708](https://github.com/user-attachments/assets/dbdd0705-1639-4b2d-96e0-c43a39ef77c1)
+~~~
 df.boxplot(column="Age",by="Survived")
-```
-
-### OUTPUT:
-
-![alt text](<SCREENSHOT IMAGES/image26.png>)
-
-## USE SCATTERPLOT OF COLUMN AGE AND FARE:
-```PYTHON
+~~~
+![Screenshot 2025-03-25 133720](https://github.com/user-attachments/assets/2b8f2d32-fd53-4bef-b4cf-fa1dd06c2c18)
+~~~
 sns.scatterplot(x=df["Age"],y=df["Fare"])
-```
-
-### OUTPUT:
-
-![alt text](<SCREENSHOT IMAGES/image27.png>)
-
-## USE JOINTPLOT COLUMN AGE AND FARE:
-```PYTHON
+~~~
+![Screenshot 2025-03-25 133921](https://github.com/user-attachments/assets/44ba9006-9bb4-4f09-bfd7-9dd4603d3bab)
+~~~
 sns.jointplot(x="Age",y="Fare",data=df)
-```
-### OUTPUT:
-
-![alt text](<SCREENSHOT IMAGES/image28.png>)
-
-
-## VIOLIN PLOT FOR COMBINED DISTRIBUTION AND RANGE:
-```PYTHON
-sns.violinplot(x='Gender', y='Survived', data=df)
-plt.title('Violin Plot: Numerical vs Categorical')
-plt.show()
-```
-
-### OUTPUT:
-
-![alt text](<SCREENSHOT IMAGES/image30.png>)
-
-## MULTIVARIATE ANALYSIS:
-## USE BOXPLOT METHOD AND ANALYZE THREE COLUMNS(PCLASS,AGE,GENDER):
-```PYTHON
+~~~
+![Screenshot 2025-03-25 133929](https://github.com/user-attachments/assets/61687759-c489-403d-a929-7ddcca64cddf)
+~~~
 fig, ax1=plt.subplots(figsize=(8,5))
 plt=sns.boxplot(ax=ax1,x='Pclass',y='Age',hue='Gender',data=df)
-```
-### OUTPUT:
-
-![alt text](<SCREENSHOT IMAGES/image31.png>)
-
-
-## USE CATPLOT METHOD AND ANALYZE THREE COLUMNS(PCLASS,SURVIVED,GENDER):
-```PYTHON
+~~~
+![Screenshot 2025-03-25 133936](https://github.com/user-attachments/assets/ae96e686-1b48-4006-9642-1518103afd80)
+~~~
 sns.catplot(data=df,col="Survived",x="Gender",hue="Pclass",kind="count")
-```
-
-### OUTPUT:
-
-![alt text](<SCREENSHOT IMAGES/image32.png>)
-
-## CO-RELATION:
-```PYTHON
-corr=df.corr()
+~~~
+![Screenshot 2025-03-25 133947](https://github.com/user-attachments/assets/7401d9d1-0885-4be8-bad6-5de1e36a0a70)
+~~~
+corr = df.corr(numeric_only=True)
 sns.heatmap(corr,annot=True)
-```
-
-### OUTPUT:
-
-![alt text](<SCREENSHOT IMAGES/image33.png>)
-
-## IMPLEMENT HEATMAP AND PAIRPLOT FOR THE DATASET:
-```PYTHON
+~~~
+![Screenshot 2025-03-25 133955](https://github.com/user-attachments/assets/1df402b5-1697-4074-8bcf-bec11ac58398)
+~~~
 sns.pairplot(df)
-```
+~~~
+![Screenshot 2025-03-25 134138](https://github.com/user-attachments/assets/f1524fa6-d9d0-47b9-8a22-728805cc1ef3)
 
-### OUTPUT:
-
-![alt text](<SCREENSHOT IMAGES/image34.png>)
-
-## RESULT:
-Hence performing Exploratory Data Analysis on the given data set is successfully executed.
+# RESULT
+We have performed Exploratory Data Analysis on the given data set successfully.
